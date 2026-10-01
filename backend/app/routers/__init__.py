@@ -19,10 +19,11 @@ from app.routers import substation as router_substation
 from app.routers import forecast as router_forecast
 from app.routers import vibration as router_vibration
 from app.routers import defect as router_defect
+from app.routers import plan as router_plan
 from app.routers import maintjob as router_maintjob
 from app.routers import spare as router_spare
 from app.routers import patrol as router_patrol
 from app.routers import accept as router_accept
 from app.routers import settle as router_settle
 
-ROUTERS = [router_windfarm, router_turbine, router_blade, router_gearbox, router_generator, router_pitch, router_yaw, router_metmast, router_collector, router_substation, router_forecast, router_vibration, router_defect, router_maintjob, router_spare, router_patrol, router_accept, router_settle]
+ROUTERS = [router_windfarm, router_turbine, router_blade, router_gearbox, router_generator, router_pitch, router_yaw, router_metmast, router_collector, router_substation, router_forecast, router_vibration, router_defect, router_plan, router_maintjob, router_spare, router_patrol, router_accept, router_settle]

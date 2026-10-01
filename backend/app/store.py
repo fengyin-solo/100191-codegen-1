@@ -31,6 +31,19 @@ class Store:
         modules: list[dict[str, object]] = []
         for name in self.module_names():
             rows = self.rows(name)
+            if name == "plan":
+                # 处置预案库与列表页同口径：按值班入口条位计数，
+                # 待处理取草稿数，停用系列（含仅存停用版本的机型）一律不计
+                from app.services.plan import PlanService
+
+                stats = PlanService().duty_stats()
+                modules.append({
+                    "name": name,
+                    "created": stats["值班入口预案"],
+                    "pending": stats["草稿"],
+                    "abnormal": 0,
+                })
+                continue
             modules.append({
                 "name": name,
                 "created": len(rows),
