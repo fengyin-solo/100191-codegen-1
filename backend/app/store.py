@@ -29,7 +29,12 @@ class Store:
 
     def overview(self) -> dict[str, object]:
         modules: list[dict[str, object]] = []
+        # 预案库两张表（预案版本、机型目录）不按通用台账口径汇总，
+        # 由预案服务按值班入口同口径补充，保证列表与概览条数一致
+        skip = {"plan", "plan_model"}
         for name in self.module_names():
+            if name in skip:
+                continue
             rows = self.rows(name)
             modules.append({
                 "name": name,
